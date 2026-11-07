@@ -1,0 +1,484 @@
+{
+  "categories": {
+    "mercado": {
+      "label": "Mercado",
+      "h": 295,
+      "icon": "M4 9h16l-1.5 10h-13zM8 9l3-5M16 9l-3-5",
+      "total": 1284.6,
+      "budget": 1400
+    },
+    "compras": {
+      "label": "Compras",
+      "h": 340,
+      "icon": "M6 8h12l-1 12H7zM9 8a3 3 0 016 0",
+      "total": 1168.45,
+      "budget": 900
+    },
+    "restaurantes": {
+      "label": "Restaurantes",
+      "h": 70,
+      "icon": "M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10M17 3c-2 0-3 3-3 7h3v11",
+      "total": 842.3,
+      "budget": 900
+    },
+    "transporte": {
+      "label": "Transporte",
+      "h": 250,
+      "icon": "M5 16v-5l2-5h10l2 5v5zM5 16v2M19 16v2M8 13h.01M16 13h.01",
+      "total": 516.8,
+      "budget": 600
+    },
+    "lazer": {
+      "label": "Lazer",
+      "h": 200,
+      "icon": "M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4l-5.3 3 1.2-6-4.5-4.1 6-.7z",
+      "total": 486.2,
+      "budget": 500
+    },
+    "saude": {
+      "label": "Saúde",
+      "h": 20,
+      "icon": "M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z",
+      "total": 324.3,
+      "budget": 400
+    },
+    "assinaturas": {
+      "label": "Assinaturas",
+      "h": 160,
+      "icon": "M4 5h16v12H4zM10 9l4 2-4 2zM8 21h8",
+      "total": 289.7,
+      "budget": 300
+    },
+    "moradia": {
+      "label": "Moradia",
+      "h": 110,
+      "icon": "M4 11l8-7 8 7v9H4zM10 20v-5h4v5",
+      "total": 0,
+      "budget": 2400
+    },
+    "renda": {
+      "label": "Renda",
+      "h": 160,
+      "icon": "M17 7L7 17M7 9v8h8",
+      "total": 8400,
+      "budget": 8400
+    },
+    "transf": {
+      "label": "Transferência",
+      "h": 275,
+      "icon": "M7 7h11l-3-3M17 17H6l3 3"
+    }
+  },
+  "expenseCategories": [
+    "mercado",
+    "compras",
+    "restaurantes",
+    "transporte",
+    "lazer",
+    "saude",
+    "assinaturas",
+    "moradia"
+  ],
+  "transactions": [
+    {
+      "id": 17,
+      "name": "Internet Fibra",
+      "cat": "moradia",
+      "date": "2026-10-28",
+      "time": "09:00",
+      "amount": -119.9,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 18,
+      "name": "Aluguel",
+      "cat": "moradia",
+      "date": "2026-10-25",
+      "time": "09:00",
+      "amount": -2200,
+      "type": "out",
+      "account": "Nebula Conta",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 1,
+      "name": "Pão de Açúcar",
+      "cat": "mercado",
+      "date": "2026-10-19",
+      "time": "18:42",
+      "amount": -286.4,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "marina"
+    },
+    {
+      "id": 2,
+      "name": "Uber",
+      "cat": "transporte",
+      "date": "2026-10-19",
+      "time": "08:15",
+      "amount": -32.9,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "Douglas"
+    },
+    {
+      "id": 3,
+      "name": "Spotify",
+      "cat": "assinaturas",
+      "date": "2026-10-18",
+      "time": "06:00",
+      "amount": -21.9,
+      "type": "out",
+      "account": "Órion Platinum",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 4,
+      "name": "Outback",
+      "cat": "restaurantes",
+      "date": "2026-10-18",
+      "time": "21:03",
+      "amount": -214.6,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "marina"
+    },
+    {
+      "id": 5,
+      "name": "Para Andrômeda Invest",
+      "cat": "transf",
+      "date": "2026-10-17",
+      "time": "10:20",
+      "amount": -1000,
+      "type": "tr",
+      "account": "Nebula Conta",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 6,
+      "name": "Farmácia São João",
+      "cat": "saude",
+      "date": "2026-10-16",
+      "time": "19:11",
+      "amount": -89.7,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "marina"
+    },
+    {
+      "id": 7,
+      "name": "Cinema Estação",
+      "cat": "lazer",
+      "date": "2026-10-15",
+      "time": "20:30",
+      "amount": -68,
+      "type": "out",
+      "account": "Nebula Virtual",
+      "member": "theo"
+    },
+    {
+      "id": 8,
+      "name": "Pix recebido · Ana",
+      "cat": "renda",
+      "date": "2026-10-14",
+      "time": "13:47",
+      "amount": 350,
+      "type": "in",
+      "account": "Nebula Conta",
+      "member": "Douglas"
+    },
+    {
+      "id": 9,
+      "name": "Zara",
+      "cat": "compras",
+      "date": "2026-10-14",
+      "time": "16:22",
+      "amount": -459.9,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "marina"
+    },
+    {
+      "id": 10,
+      "name": "Netflix",
+      "cat": "assinaturas",
+      "date": "2026-10-12",
+      "time": "06:00",
+      "amount": -55.9,
+      "type": "out",
+      "account": "Órion Platinum",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 11,
+      "name": "Posto Ipiranga",
+      "cat": "transporte",
+      "date": "2026-10-11",
+      "time": "09:38",
+      "amount": -210,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "Douglas"
+    },
+    {
+      "id": 12,
+      "name": "iFood",
+      "cat": "restaurantes",
+      "date": "2026-10-10",
+      "time": "20:55",
+      "amount": -64.8,
+      "type": "out",
+      "account": "Nebula Virtual",
+      "member": "theo"
+    },
+    {
+      "id": 13,
+      "name": "Atacadão",
+      "cat": "mercado",
+      "date": "2026-10-08",
+      "time": "11:04",
+      "amount": -512.35,
+      "type": "out",
+      "account": "Nebula Conta",
+      "member": "marina"
+    },
+    {
+      "id": 14,
+      "name": "Academia Pulse",
+      "cat": "saude",
+      "date": "2026-10-06",
+      "time": "07:00",
+      "amount": -129.9,
+      "type": "out",
+      "account": "Nebula Black",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 15,
+      "name": "Salário mensal",
+      "cat": "renda",
+      "date": "2026-10-05",
+      "time": "00:01",
+      "amount": 6850,
+      "type": "in",
+      "account": "Nebula Conta",
+      "member": "Douglas",
+      "recur": "month"
+    },
+    {
+      "id": 16,
+      "name": "Freelance · Design",
+      "cat": "renda",
+      "date": "2026-10-03",
+      "time": "15:30",
+      "amount": 1200,
+      "type": "in",
+      "account": "Banco Órion",
+      "member": "marina"
+    }
+  ],
+  "cards": [
+    {
+      "name": "Nebula Black",
+      "tier": "Black",
+      "last": "4821",
+      "holder": "LUCAS MENDES",
+      "exp": "08/31",
+      "limit": 15000,
+      "used": 3842.1,
+      "due": "10 nov",
+      "closing": "03 nov",
+      "best": "Dia 04",
+      "bg": "radial-gradient(120% 90% at 100% 0%,rgba(167,139,250,.85),transparent 55%),radial-gradient(90% 80% at 0% 100%,rgba(91,33,182,.95),transparent 60%),#120a24"
+    },
+    {
+      "name": "Órion Platinum",
+      "tier": "Platinum",
+      "last": "7305",
+      "holder": "LUCAS MENDES",
+      "exp": "02/30",
+      "limit": 8000,
+      "used": 1270.25,
+      "due": "18 nov",
+      "closing": "11 nov",
+      "best": "Dia 12",
+      "bg": "radial-gradient(110% 90% at 0% 0%,oklch(0.6 0.16 255 / .9),transparent 60%),radial-gradient(90% 80% at 100% 100%,oklch(0.45 0.18 285 / .95),transparent 60%),#0b0d26"
+    },
+    {
+      "name": "Nebula Virtual",
+      "tier": "Virtual",
+      "last": "0192",
+      "holder": "LUCAS MENDES",
+      "exp": "11/27",
+      "limit": 2000,
+      "used": 312.9,
+      "due": "10 nov",
+      "closing": "03 nov",
+      "best": "Dia 04",
+      "bg": "radial-gradient(110% 90% at 100% 100%,oklch(0.62 0.2 335 / .85),transparent 60%),radial-gradient(90% 80% at 0% 0%,oklch(0.5 0.2 300 / .9),transparent 60%),#1a0a22"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Nebula Conta",
+      "type": "Conta corrente · Principal",
+      "bal": 14230.55,
+      "initial": "N",
+      "h": 295
+    },
+    {
+      "name": "Banco Órion",
+      "type": "Conta corrente",
+      "bal": 6120.4,
+      "initial": "O",
+      "h": 250
+    },
+    {
+      "name": "Andrômeda Invest",
+      "type": "Poupança · 1,02% a.m.",
+      "bal": 3496.97,
+      "initial": "A",
+      "h": 200
+    }
+  ],
+  "months": [
+    {
+      "label": "Mai",
+      "full": "Maio",
+      "inc": 8200,
+      "out": 5320
+    },
+    {
+      "label": "Jun",
+      "full": "Junho",
+      "inc": 8200,
+      "out": 4980
+    },
+    {
+      "label": "Jul",
+      "full": "Julho",
+      "inc": 8650,
+      "out": 6110
+    },
+    {
+      "label": "Ago",
+      "full": "Agosto",
+      "inc": 8400,
+      "out": 5240
+    },
+    {
+      "label": "Set",
+      "full": "Setembro",
+      "inc": 8400,
+      "out": 5530
+    },
+    {
+      "label": "Out",
+      "full": "Outubro",
+      "inc": 8400,
+      "out": 4912.35
+    }
+  ],
+  "flow": [
+    20360,
+    20240,
+    21440,
+    21310,
+    22050,
+    28900,
+    28770,
+    28260,
+    28180,
+    28110,
+    27900,
+    27840,
+    27790,
+    27680,
+    27500,
+    27420,
+    26420,
+    26180,
+    23847
+  ],
+  "members": [
+    {
+      "id": "Douglas",
+      "name": "Douglas Domiciano",
+      "first": "Douglas",
+      "initials": "DD",
+      "role": "Titular",
+      "h": 295,
+      "limit": null,
+      "you": true
+    },
+    {
+      "id": "marina",
+      "name": "Marina Domiciano",
+      "first": "Marina",
+      "initials": "MM",
+      "role": "Administradora",
+      "h": 340,
+      "limit": 3000,
+      "you": false
+    },
+    {
+      "id": "theo",
+      "name": "Theo Domiciano",
+      "first": "Theo",
+      "initials": "TM",
+      "role": "Dependente",
+      "h": 200,
+      "limit": 400,
+      "you": false
+    }
+  ],
+  "today": "2026-10-19",
+  "chat": {
+    "role": "assistant",
+    "text": "Olá, Douglas! Sou a Nébula IA. Posso analisar os gastos da família, categorias, contas recorrentes e sugerir onde economizar. O que você quer saber?"
+  },
+  "nav": [
+    {
+      "id": "home",
+      "label": "Início",
+      "icon": "M4 11l8-7 8 7v9h-5v-6H9v6H4z"
+    },
+    {
+      "id": "history",
+      "label": "Histórico",
+      "icon": "M7 7h11l-3-3M17 17H6l3 3"
+    },
+    {
+      "id": "cards",
+      "label": "Carteira",
+      "icon": "M3 6h18v12H3zM3 10h18M7 15h4"
+    },
+    {
+      "id": "analytics",
+      "label": "Análises",
+      "icon": "M5 20V10M12 20V4M19 20v-7"
+    },
+    {
+      "id": "chat",
+      "label": "Chat com IA",
+      "icon": "M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7z"
+    }
+  ],
+  "summary": {
+    "income": 8400,
+    "expense": 4912.35,
+    "budget": 6500,
+    "invites": [
+      "helena.costa@email.com"
+    ]
+  }
+}

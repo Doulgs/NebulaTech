@@ -1,0 +1,414 @@
+{
+  "versions": {
+    "react-native-css-interop": "0.2.7",
+    "@gorhom/bottom-sheet": "5.2.14",
+    "react-native-reanimated": "4.7.1"
+  },
+  "patches": [
+    {
+      "file": "node_modules/react-native-css-interop/src/runtime/components.ts",
+      "before": "743a6a7cdbc9e52d790b17fbbfee41554432a95b9ccd766e908f086d3d5a8e4a",
+      "after": "5f4f930016b49973b4e5f307cc2ccbd2eb675588af9291862943718f9570f8f7",
+      "edits": [
+        {
+          "start": 1431,
+          "end": 1518,
+          "text": ""
+        },
+        {
+          "start": 66,
+          "end": 85,
+          "text": "\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/react-native-css-interop/dist/runtime/components.js",
+      "before": "9f62f18049b7e46156684a366b6548f272ebecd08626e7758f82a27c16064007",
+      "after": "52b5028672b14af916fbf9392744393b669b58c389079b74753bda24d3fca002",
+      "edits": [
+        {
+          "start": 1609,
+          "end": 1726,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "node_modules/react-native-css-interop/src/runtime/native/render-component.tsx",
+      "before": "0ef5d75692cca10294054c2d34bb1f8185cbda0de1c7bbf61bbd21307d8bb5b1",
+      "after": "b7eae28fea8f6111b6cee120215e2151ab1396d275c057fb906a72bf97c67cbb",
+      "edits": [
+        {
+          "start": 6836,
+          "end": 6843,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([style]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/react-native-css-interop/dist/runtime/native/render-component.js",
+      "before": "a498e112892ba2dc09f36e22f938813944abea608011135fb94ec1623bf5ed28",
+      "after": "3feac7e5ca05b8dfa271248d37f77c0f32f126a4c7562ec0b3d5502250b7a7e6",
+      "edits": [
+        {
+          "start": 5215,
+          "end": 5222,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([style]) : undefined"
+        },
+        {
+          "start": 13,
+          "end": 13,
+          "text": "\nconst __nebulaPlatform = require(\"react-native\").Platform;\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx",
+      "before": "672f6cf7cffbe780852f5528a940d3d2789582bc428e7e114c893d5a6bbea211",
+      "after": "4e6ffb7367189eab6d372ce5fbc9df5f17311fe9844c39247044ef7451d28b72",
+      "edits": [
+        {
+          "start": 50908,
+          "end": 50932,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([_providedAnimatedIndex]) : undefined"
+        },
+        {
+          "start": 50606,
+          "end": 50643,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([_providedAnimatedPosition, topInset]) : undefined"
+        },
+        {
+          "start": 50085,
+          "end": 50312,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n        $modal,\n        bottomInset,\n        keyboardBehavior,\n        keyboardBlurBehavior,\n        android_keyboardInputMode,\n        animatedKeyboardState,\n        animatedLayoutState,\n        getEvaluatedPosition,\n      ]) : undefined"
+        },
+        {
+          "start": 46507,
+          "end": 46568,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([isLayoutCalculated, didAnimateOnMount, animatedDetentsState]) : undefined"
+        },
+        {
+          "start": 45305,
+          "end": 45418,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n        animatedContainerHeightDidChange,\n        animatedAnimationState,\n        animatedDetentsState,\n      ]) : undefined"
+        },
+        {
+          "start": 12978,
+          "end": 13210,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n      android_keyboardInputMode,\n      animatedAnimationState,\n      animatedLayoutState,\n      animatedCurrentIndex,\n      animatedPosition,\n      animatedDetentsState,\n      isInTemporaryPosition,\n      isLayoutCalculated,\n    ]) : undefined"
+        },
+        {
+          "start": 10526,
+          "end": 10721,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n      animatedLayoutState,\n      animatedDetentsState,\n      animatedKeyboardState,\n      animatedPosition,\n      animatedSheetHeight,\n      isInTemporaryPosition,\n      keyboardBehavior,\n    ]) : undefined"
+        },
+        {
+          "start": 7615,
+          "end": 7675,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedLayoutState, animatedDetentsState, handleComponent]) : undefined"
+        },
+        {
+          "start": 6174,
+          "end": 6217,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedLayoutState, animatedDetentsState]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheetBody.tsx",
+      "before": "ec1fb44df58cfb653236092418e10e2419e45379da4e974a6a2312722324981c",
+      "after": "4020f5a8b54809ee760bb75ba0f8c8650f9035d8c34702d992d405718cd88269",
+      "edits": [
+        {
+          "start": 865,
+          "end": 898,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedPosition, animatedIndex]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheetContent.tsx",
+      "before": "67559d08ec8bbaa86df1ba60a7638b1f412d3cbd21bbcb5d5e1fa7ec4e06d547",
+      "after": "2a6f30a7dbc55fffe5ec4d41c25078cf4cb02276170f1b94288205e2902c8500",
+      "edits": [
+        {
+          "start": 6092,
+          "end": 6294,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n    overDragResistanceFactor,\n    enableDynamicSizing,\n    detached,\n    animationConfigs,\n    overrideReduceMotion,\n    animatedLayoutState,\n    animatedContentHeightMax,\n    animatedLayoutState,\n  ]) : undefined"
+        },
+        {
+          "start": 4974,
+          "end": 5109,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n    overDragResistanceFactor,\n    animatedPosition,\n    animatedLayoutState,\n    animatedDetentsState,\n    animatedKeyboardState,\n  ]) : undefined"
+        },
+        {
+          "start": 3567,
+          "end": 3698,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n    animatedLayoutState,\n    animatedKeyboardState,\n    animatedSheetHeight,\n    isInTemporaryPosition,\n    keyboardBehavior,\n  ]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetBackdrop/BottomSheetBackdrop.tsx",
+      "before": "908d953c92427be3ac42ca420cfaab6792edfb4dce8af21d5e1a8192a03a7193",
+      "after": "bb7816abfbeeae767ba5e2aba3dbf6dfad0a3acd64a68d0fafa9d6ebf496fdeb",
+      "edits": [
+        {
+          "start": 3743,
+          "end": 3762,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([disappearsOnIndex]) : undefined"
+        },
+        {
+          "start": 3171,
+          "end": 3230,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedIndex, appearsOnIndex, disappearsOnIndex, opacity]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetDebugView/ReText.tsx",
+      "before": "cabd3598e339105c86d05d06e95923de60d2845b21dd00c148ac38f14bd608d0",
+      "after": "99a76c0e8bafb425d5f3de8e1d1f212e58db331e767ca76fbe0b876c586b0255",
+      "edits": [
+        {
+          "start": 1589,
+          "end": 1604,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([providedValue]) : undefined"
+        },
+        {
+          "start": 1457,
+          "end": 1479,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([text, _providedValue]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetDebugView/ReText.webx.tsx",
+      "before": "830ad28c9110cb6e1fdc3ad26d0c89dcc71c27947ea75905df6e6cfcb3bfcd7c",
+      "after": "b18019de3a382e2e65544db1ce6d5bd5ea78b413906ce8e3cf574e24bcd5b500",
+      "edits": [
+        {
+          "start": 1113,
+          "end": 1115,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([]) : undefined"
+        },
+        {
+          "start": 915,
+          "end": 937,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([_providedValue, text]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetFooter/BottomSheetFooter.tsx",
+      "before": "3c372d030f0de4c2cc181ecf064c00001bad4bcd9e22543afb612bb1f54effd8",
+      "after": "51398c35d190663dc117f0091f3ce7212f7eaf530a4df54865224eac8be71375",
+      "edits": [
+        {
+          "start": 1305,
+          "end": 1365,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([bottomInset, animatedKeyboardState, animatedFooterPosition]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetFooter/BottomSheetFooterContainer.tsx",
+      "before": "ed44e9048a68bca430c786935309033324c8792492c2c1005b53830e6f3dcc89",
+      "after": "c9c200e98a6688a7b735a45944235de8dbe38328e55141a430d0b64a2719f11c",
+      "edits": [
+        {
+          "start": 1246,
+          "end": 1308,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedKeyboardState, animatedPosition, animatedLayoutState]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetRefreshControl/BottomSheetRefreshControl.android.tsx",
+      "before": "f3d9cd01680d9934671e65e99d243fb560f0100008502764415a14451f5e4e15",
+      "after": "5a29076102895452363035e61443cce040e4d6d63b2e8270cc6b258cce2b3419",
+      "edits": [
+        {
+          "start": 1351,
+          "end": 1382,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedScrollableState.value]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/components/bottomSheetScrollable/createBottomSheetScrollableComponent.tsx",
+      "before": "80046d44851623892266ad2f1a35052ff037f2d1721fe7cbef569464d1c7e690",
+      "after": "8aa4c527fd23785dfb3c40b7ba7c2b296e227f4d8f8e6e1db8143259c6ee2853",
+      "edits": [
+        {
+          "start": 2576,
+          "end": 2631,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedScrollableState, showsVerticalScrollIndicator]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useAnimatedDetents.ts",
+      "before": "f612995dd6a0f216d52f5caaef294da16006c614e3c9c9d387515a4632feb84d",
+      "after": "e01c826d3b9a4a5c6fb556f5ebe3729cc0a787c84e604f7e9c852be82704b89d",
+      "edits": [
+        {
+          "start": 4099,
+          "end": 4229,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n    detents,\n    layoutState,\n    enableDynamicSizing,\n    maxDynamicContentSize,\n    detached,\n    $modal,\n    bottomInset,\n  ]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useAnimatedKeyboard.ts",
+      "before": "396fa42f8637c84cd5c233ba994e6a30b1db44a4c3f0b6bfcfd76b7c109b584c",
+      "after": "2e1064ac7da784e8dcc7d4dc05ef0428b115aac0800464cf6a8adc75fe89b182",
+      "edits": [
+        {
+          "start": 4309,
+          "end": 4352,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([temporaryCachedState, handleKeyboardEvent]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useAnimatedLayout.ts",
+      "before": "1324368fb7e77bbf817b10cb73a864cce336813c247fefb5d29bceaf3b7fc611",
+      "after": "a247d536e347f7a16f17cd02a662c3588acd007c84373ff0489b9794d308da3f",
+      "edits": [
+        {
+          "start": 3481,
+          "end": 3510,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([state, verticalInset, modal]) : undefined"
+        },
+        {
+          "start": 3043,
+          "end": 3072,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([state, verticalInset, modal]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useBottomSheetContentContainerStyle.ts",
+      "before": "cc9fb4196e8d8520b72a311fa7495bde1d5866d09f671a7377ebfc50932605b3",
+      "after": "bf6f6f81b714a6d3b02eade5227922010ddf954dbe11631ed53fc6fa7c78f025",
+      "edits": [
+        {
+          "start": 2505,
+          "end": 2556,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([animatedLayoutState, enableFooterMarginAdjustment]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useScrollable.ts",
+      "before": "77162f0e143462f6dc09ebc416ac35d0d8dc958937d09f253ca6b613ff115b95",
+      "after": "183a8efb55b25be18132db0a218caed48cbe54aed4cb716891bab9e94ecca952",
+      "edits": [
+        {
+          "start": 2088,
+          "end": 2216,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n    enableContentPanningGesture,\n    animatedSheetState,\n    animatedKeyboardState,\n    animatedAnimationState,\n    state,\n  ]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    },
+    {
+      "file": "node_modules/@gorhom/bottom-sheet/src/hooks/useScrollHandler.ts",
+      "before": "9b2c1bb452ffb6122291df61904bfcd3fbc8b1ccd779bcee6cde3fe95f6b2131",
+      "after": "81cd492706bbea02e41e4a28c3b4ae1375d71295e9653960de1f6d370c454958",
+      "edits": [
+        {
+          "start": 1644,
+          "end": 1841,
+          "text": "__nebulaPlatform.OS === \"web\" ? ([\n      handleOnScroll,\n      handleOnBeginDrag,\n      handleOnEndDrag,\n      handleOnMomentumBegin,\n      handleOnMomentumEnd,\n      onScroll,\n      onScrollBeginDrag,\n      onScrollEndDrag,\n    ]) : undefined"
+        },
+        {
+          "start": 0,
+          "end": 0,
+          "text": "\nimport { Platform as __nebulaPlatform } from \"react-native\";\n"
+        }
+      ]
+    }
+  ]
+}
