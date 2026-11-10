@@ -42,10 +42,13 @@ export default function Analytics() {
   return (
     <Page
       header={
-        <BackTitle title="Análises" subtitle="Enxergue além dos números." />
+        <BackTitle
+          title="Análises"
+          subtitle="Entenda para onde vai o seu dinheiro."
+        />
       }
     >
-      <Card>
+      <Card tone="orbital" className="gap-3">
         <Section title="Gastos por categoria" />
         <Donut categories={categories} selected={selected} onSelect={toggle} />
         {categories
@@ -57,7 +60,7 @@ export default function Analytics() {
               onPress={() => toggle(c.id)}
               className={cn(
                 "rounded-[12px] p-[8px]",
-                selected === c.id ? "bg-[#8B5CF61F]" : "bg-[transparent]",
+                selected === c.id ? "bg-nebula-purple/15" : "bg-[transparent]",
               )}
             >
               <Row className="justify-between">
@@ -110,7 +113,7 @@ export default function Analytics() {
           <T size={10} className="text-nebula-purple">
             ● Receitas
           </T>
-          <T size={10} className="text-[#84719F]">
+          <T size={10} className="text-nebula-muted">
             ● Despesas
           </T>
         </Row>
@@ -133,7 +136,7 @@ export default function Analytics() {
       <Section title="Seus indicadores" />
       <View className="flex-row flex-wrap gap-[12px]">
         {indicators.map(([label, value, note]) => (
-          <Card key={label} className="w-[48%] grow p-[16px] gap-[10px]">
+          <Card key={label} className="w-[48%] grow gap-2 p-4">
             <T muted size={10}>
               {label}
             </T>

@@ -45,16 +45,23 @@ export function TransactionDetail() {
     if (!tx) return;
     try {
       await Share.share({
-        title: "Comprovante Nébula · demonstração",
-        message: `Comprovante de demonstração Nébula\n${tx.name}\n${signedMoney(tx.amount)}\n${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\nSem validade bancária.`,
+        title: "Comprovante Andromeda · demonstração",
+        message: `Comprovante de demonstração Andromeda\n${tx.name}\n${signedMoney(tx.amount)}\n${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\nSem validade bancária.`,
       });
     } catch {
       setError("Não foi possível compartilhar. Tente novamente.");
     }
   }
   return (
-    <FormPage header={<BackTitle title="Detalhes" subtitle="Informações e comprovante da transação" />}>
-      <View className="items-center gap-[16px] py-[16px]">
+    <FormPage
+      header={
+        <BackTitle
+          title="Detalhes"
+          subtitle="Informações e comprovante da transação"
+        />
+      }
+    >
+      <Card tone="orbital" className="items-center gap-3 py-5">
         <View
           className="w-[64px] h-[64px] rounded-[22px] items-center justify-center"
           style={{ backgroundColor: color(cat.h) + "22" }}
@@ -82,7 +89,7 @@ export function TransactionDetail() {
         >
           {tx.date > seed.today ? "Agendada" : "Concluída"}
         </T>
-      </View>
+      </Card>
       <Card>
         {rows.map(([k, v]) => (
           <Row key={k} className="justify-between">

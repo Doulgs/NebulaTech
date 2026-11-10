@@ -1,17 +1,17 @@
-import { Gradient } from "@/components/ui/gradient";
 import { cn } from "@/theme/classes";
+import { palette } from "@/theme/colors";
 import { type ReactNode } from "react";
 import { View } from "react-native";
-import { PressScale } from "./press-scale";
-
+import { GlassSurface } from "./glass-surface";
 import { Icon } from "./icon";
+import { PressScale } from "./press-scale";
 import { T } from "./text";
-const buttonInner =
-  "min-h-[48px] flex-row items-center justify-center gap-[9px] px-[18px] py-3";
+
 export function Button({
   children,
   onPress,
   secondary = false,
+  variant = "accent",
   disabled = false,
   icon,
   testID,
@@ -20,6 +20,7 @@ export function Button({
   children: ReactNode;
   onPress: () => void;
   secondary?: boolean;
+  variant?: "accent" | "neutral";
   disabled?: boolean;
   icon?: string;
   testID?: string;
@@ -28,59 +29,75 @@ export function Button({
   return (
     <PressScale
       testID={testID}
-      accessibilityRole="button"
       disabled={disabled}
+      accessibilityState={{ disabled }}
       onPress={onPress}
-      className={cn(
-        "shrink active:opacity-80",
-        disabled && "opacity-[0.45]",
-        secondary && "rounded-2xl border border-nebula-border bg-white/[0.03]",
-        className,
-      )}
+      className={cn("shrink rounded-full", className)}
     >
-      {secondary ? (
-        <View className={buttonInner}>
-          {!!icon && <Icon name={icon} size={18} />}
-          <T bold>{children}</T>
-        </View>
-      ) : (
-        <Gradient
-          colors={["#9E80E8", "#8060CF"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          className={cn(buttonInner, "min-h-[54px] rounded-[17px]")}
+      <View
+        className={cn(
+          "min-h-[52px] flex-row items-center justify-center gap-2 rounded-full border px-4 py-3",
+          disabled
+            ? "border-transparent bg-nebula-disabled"
+            : secondary
+              ? "border-nebula-border bg-nebula-raised"
+              : variant === "neutral"
+                ? "border-transparent bg-nebula-neutral"
+                : "border-transparent bg-nebula-purple",
+        )}
+      >
+        {!!icon && (
+          <Icon
+            name={icon}
+            size={18}
+            tint={secondary && !disabled ? palette.text : palette.ink}
+          />
+        )}
+        <T
+          bold
+          size={14}
+          className={cn(
+            "shrink text-center",
+            (!secondary || disabled) && "text-nebula-ink",
+          )}
         >
-          {!!icon && <Icon name={icon} size={18} />}
-          <T bold size={15}>
-            {children}
-          </T>
-        </Gradient>
-      )}
+          {children}
+        </T>
+      </View>
     </PressScale>
   );
 }
+
 export function IconButton({
   name,
   onPress,
   label,
   active = false,
+  disabled = false,
 }: {
   name: string;
   onPress: () => void;
   label: string;
   active?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <PressScale
-      accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
       onPress={onPress}
-      className={cn(
-        "h-11 w-11 items-center justify-center rounded-full border border-nebula-border bg-white/[0.04]",
-        active && "border-[#9B7EC2] bg-[#432C6B]",
-      )}
+      className={cn("h-11 w-11", disabled && "opacity-50")}
     >
-      <Icon name={name} size={18} />
+      {active ? (
+        <View className="h-11 w-11 items-center justify-center rounded-full bg-nebula-purple">
+          <Icon name={name} size={20} tint={palette.ink} />
+        </View>
+      ) : (
+        <GlassSurface className="h-11 w-11 items-center justify-center">
+          <Icon name={name} size={19} />
+        </GlassSurface>
+      )}
     </PressScale>
   );
 }

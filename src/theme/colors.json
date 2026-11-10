@@ -1,11 +1,20 @@
 {
-  "bg": "#0C0C16",
-  "surface": "#171724",
-  "raised": "#202032",
-  "border": "#FFFFFF12",
-  "purple": "#B9A2FF",
-  "muted": "#A6A5BD",
-  "text": "#F4F2FC",
+  "bg": "#0C0914",
+  "surface": "#171321",
+  "raised": "#211A30",
+  "border": "#FFFFFF1C",
+  "purple": "#C5A9FF",
+  "ink": "#1A102C",
+  "neutral": "#F5F1FC",
+  "disabled": "#9D96AA",
+  "muted": "#ADA4BD",
+  "text": "#F7F3FF",
   "green": "#8CD9BF",
-  "red": "#F3A5AE"
+  "red": "#F3A5AE",
+  "errorSurface": "#3A2031",
+  "glassTop": "#2F263FEF",
+  "glassBottom": "#191322F5",
+  "glassTint": "#271A4055",
+  "selected": "#141020",
+  "heroBase": "#1B102D"
 }

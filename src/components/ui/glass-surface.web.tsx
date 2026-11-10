@@ -15,7 +15,7 @@ export function GlassSurface({
   return (
     <View
       className={cn(
-        "relative overflow-hidden rounded-full border border-white/[0.15] bg-[#21172F]/75",
+        "relative overflow-hidden rounded-full border border-nebula-border bg-nebula-raised/[0.85]",
         className,
       )}
       style={[

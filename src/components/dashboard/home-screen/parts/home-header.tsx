@@ -1,97 +1,81 @@
-import { View } from "react-native";
-import { router } from "expo-router";
+import { IconButton } from "@/components/ui/button";
+import { Chip, Chips } from "@/components/ui/chip";
 import { GlassSurface } from "@/components/ui/glass-surface";
-import { Gradient } from "@/components/ui/gradient";
 import { Icon } from "@/components/ui/icon";
 import { PressScale } from "@/components/ui/press-scale";
 import { Row } from "@/components/ui/surface";
 import { T } from "@/components/ui/text";
-import { useDashboard } from "@/hooks/use-dashboard";
-import { seed } from "@/mock";
+import type { useDashboard } from "@/hooks/use-dashboard";
+import { palette } from "@/theme/colors";
+import { router } from "expo-router";
+import { View } from "react-native";
 
-function HeaderAction({
-  name,
-  label,
-  onPress,
-  dot = false,
-}: {
-  name: string;
-  label: string;
-  onPress: () => void;
-  dot?: boolean;
-}) {
-  return (
-    <View className="h-11 w-11 items-center justify-center">
-      <GlassSurface className="absolute h-9 w-9" tint="#FFFFFF08">
-        <View className="h-9 w-9" />
-      </GlassSurface>
-      <PressScale
-        accessibilityLabel={label}
-        onPress={onPress}
-        className="h-11 w-11 items-center justify-center"
-      >
-        <View className="relative h-11 w-11 items-center justify-center">
-          <Icon name={name} size={17} />
-          {dot && (
-            <View className="absolute right-2 top-1.5 h-1.5 w-1.5 rounded-full bg-nebula-purple" />
-          )}
-        </View>
-      </PressScale>
-    </View>
-  );
-}
 export function HomeHeader({
   model,
 }: {
   model: ReturnType<typeof useDashboard>;
 }) {
-  const { data, calendar, setCalendar } = model;
-  const upcoming = data.transactions
-    .filter((tx) => tx.date > seed.today)
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const { data, calendar, setCalendar, togglePrivacy } = model;
+  const firstName = data.session?.name.trim().split(/\s+/)[0];
   return (
-    <>
-      <Row className="justify-between gap-2">
-        <View className="flex-1 gap-1">
-          <T size={12} muted>
-            Olá, {data.session?.name.split(" ")[0]}
+    <View className="gap-5">
+      <Row className="justify-between">
+        <PressScale
+          accessibilityLabel="Abrir perfil"
+          onPress={() => router.push("/profile")}
+        >
+          <GlassSurface className="h-11 w-11 items-center justify-center">
+            <T bold size={14} className="text-nebula-purple">
+              {firstName?.slice(0, 1).toUpperCase()}
+            </T>
+          </GlassSurface>
+        </PressScale>
+        <Row className="flex-1 gap-1.5">
+          <Icon name="chat" size={18} tint={palette.purple} />
+          <T bold size={15}>
+            Andromeda
           </T>
-          <T bold size={28} className="tracking-[-0.7px]">
-            Início
-          </T>
-        </View>
+        </Row>
         <Row className="gap-2">
-          <HeaderAction
-            name="calendar"
-            label={calendar ? "Mostrar resumo" : "Mostrar calendário"}
-            onPress={() => setCalendar(!calendar)}
+          <IconButton
+            name={data.hide ? "hidden" : "eye"}
+            label={data.hide ? "Mostrar valores" : "Ocultar valores"}
+            onPress={togglePrivacy}
           />
-          <HeaderAction
-            name="bell"
-            label="Ver próximos lançamentos"
-            dot={upcoming.length > 0}
-            onPress={() => router.push("/scheduled")}
+          <IconButton
+            name="plus"
+            label="Nova transação"
+            onPress={() => router.push("/add")}
+            active
           />
-          <PressScale
-            accessibilityLabel="Perfil e sair"
-            onPress={() => router.push("/profile")}
-            hitSlop={4}
-          >
-            <Gradient
-              colors={["#7340BF", "#8A52E7"]}
-              className="h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[#BE9AF4]/70"
-            >
-              <T bold size={12}>
-                {data.session?.name
-                  .split(" ")
-                  .map((part) => part[0])
-                  .slice(0, 2)
-                  .join("")}
-              </T>
-            </Gradient>
-          </PressScale>
         </Row>
       </Row>
-    </>
+      <Chips>
+        <Chip
+          label="Visão geral"
+          active={!calendar}
+          onPress={() => setCalendar(false)}
+        />
+        <Chip
+          label="Calendário"
+          active={calendar}
+          onPress={() => setCalendar(true)}
+        />
+        <Chip label="Carteira" onPress={() => router.replace("/cards")} />
+      </Chips>
+      <View className="gap-0.5">
+        <T muted size={13}>
+          Outubro de 2026 · Demonstração
+        </T>
+        <T
+          accessibilityRole="header"
+          size={34}
+          bold
+          className="tracking-[-1px]"
+        >
+          Olá, {firstName || "bem-vindo"}
+        </T>
+      </View>
+    </View>
   );
 }

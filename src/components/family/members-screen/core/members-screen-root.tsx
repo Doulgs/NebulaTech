@@ -28,7 +28,8 @@ export default function Members() {
     setError("");
     const value = email.trim().toLowerCase();
     if (!validEmail(value)) return setError("Digite um e-mail válido.");
-    if (data.invites.includes(value)) return setError("Este e-mail já tem um convite pendente.");
+    if (data.invites.includes(value))
+      return setError("Este e-mail já tem um convite pendente.");
     setBusy(true);
     try {
       await save((d) => ({ ...d, invites: [...d.invites, value] }));
@@ -40,12 +41,20 @@ export default function Members() {
     }
   }
   return (
-    <Page header={<BackTitle title="Membros" subtitle="Uma família, um universo." />}>
-      <Card>
+    <Page
+      header={
+        <BackTitle
+          title="Membros"
+          subtitle="Acompanhe os gastos de cada pessoa."
+          back
+        />
+      }
+    >
+      <Card tone="orbital">
         <T size={12} muted>
           Família Domiciano
         </T>
-        <Amount value={total} size={28} />
+        <Amount value={total} size={32} />
         <T size={11} muted>
           Despesas nos lançamentos disponíveis
         </T>
@@ -57,7 +66,9 @@ export default function Members() {
         <Pressable
           accessibilityRole="button"
           key={m.id}
-          onPress={() => router.push({ pathname: "/history", params: { member: m.id } })}
+          onPress={() =>
+            router.push({ pathname: "/history", params: { member: m.id } })
+          }
         >
           <Card className="p-[17px]">
             <Row>
@@ -86,9 +97,15 @@ export default function Members() {
             </Row>
             {m.limit && (
               <>
-                <Progress value={spent(m.id) / m.limit} tint={spent(m.id) > m.limit ? palette.red : palette.purple} />
+                <Progress
+                  value={spent(m.id) / m.limit}
+                  tint={spent(m.id) > m.limit ? palette.red : palette.purple}
+                />
                 <T size={10} muted>
-                  Limite mensal: {data.hide ? "••••" : `${money(spent(m.id))} de ${money(m.limit)}`}
+                  Limite mensal:{" "}
+                  {data.hide
+                    ? "••••"
+                    : `${money(spent(m.id))} de ${money(m.limit)}`}
                 </T>
               </>
             )}
@@ -122,10 +139,11 @@ export default function Members() {
       ))}
       <Card>
         <T size={16} bold>
-          Convide para sua órbita
+          Convidar um membro
         </T>
         <T muted size={11}>
-          O convite ficará salvo neste dispositivo, pronto para a futura integração.
+          O convite ficará salvo neste dispositivo, pronto para a futura
+          integração.
         </T>
         <Field
           label="E-mail do convidado"

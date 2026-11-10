@@ -1,15 +1,22 @@
-import { Orb, Stars } from "@/components/ui/brand";
+import { AppBackground } from "@/components/layout/app-background";
+import { Orb } from "@/components/ui/brand";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { ErrorText } from "@/components/ui/state-views";
 import { Row } from "@/components/ui/surface";
 import { T } from "@/components/ui/text";
 import { useFinance } from "@/hooks/use-finance";
-import { cn } from "@/theme/classes";
+import { SegmentedControl } from "@/components/ui/segmented-control";
 import { validEmail } from "@/utils/finance";
 import { Redirect } from "expo-router";
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform, Pressable, ScrollView, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  View,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 export default function Auth() {
   const { data, save } = useFinance();
@@ -26,11 +33,15 @@ export default function Auth() {
     setError("");
     setNote("");
     if (!demo) {
-      if (mode === "up" && name.trim().length < 2) return setError("Informe seu nome completo.");
+      if (mode === "up" && name.trim().length < 2)
+        return setError("Informe seu nome completo.");
       if (!validEmail(email)) return setError("Digite um e-mail válido.");
-      if (mode !== "reset" && password.length < 6) return setError("A senha precisa ter ao menos 6 caracteres.");
+      if (mode !== "reset" && password.length < 6)
+        return setError("A senha precisa ter ao menos 6 caracteres.");
       if (mode === "reset") {
-        setNote("Modo demonstração: nenhuma mensagem é enviada. Use “Explorar demonstração” para entrar.");
+        setNote(
+          "Modo demonstração: nenhuma mensagem é enviada. Use “Explorar demonstração” para entrar.",
+        );
         return;
       }
     }
@@ -51,8 +62,11 @@ export default function Auth() {
   }
   return (
     <View className="flex-1 bg-nebula-bg">
-      <Stars />
-      <KeyboardAvoidingView className="flex-1" behavior={Platform.OS === "ios" ? "padding" : undefined}>
+      <AppBackground path="/" />
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+      >
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerClassName="p-[26px] w-[100%] max-w-[440px] self-center gap-[18px]"
@@ -61,36 +75,32 @@ export default function Auth() {
             paddingBottom: inset.bottom + 26,
           }}
         >
-          <View className="items-center gap-[22px] pb-[18px]">
-            <Orb />
+          <View className="items-center gap-4 pb-4">
+            <Orb size={78} />
             <View className="items-center gap-[8px]">
               <T size={34} bold className="font-display tracking-[-1px]">
-                nébula
+                Andromeda
               </T>
-              <T size={13} muted>
-                Seu dinheiro em órbita, sob controle.
+              <T size={14} muted className="text-center">
+                Suas contas, seus gastos e sua família em um só lugar.
               </T>
             </View>
           </View>
-          <View className="flex-row p-[4px] rounded-[16px] border-[1px] border-nebula-border bg-[#FFFFFF08] gap-[4px]">
-            {(["in", "up"] as const).map((m) => (
-              <Pressable
-                key={m}
-                accessibilityRole="button"
-                onPress={() => {
-                  setMode(m);
-                  setError("");
-                  setNote("");
-                }}
-                className={cn(
-                  "flex-1 p-[12px] items-center rounded-[12px]",
-                  mode === m ? "bg-[#47306B]" : "bg-[transparent]",
-                )}
-              >
-                <T bold>{m === "in" ? "Entrar" : "Criar conta"}</T>
-              </Pressable>
-            ))}
-          </View>
+          {mode !== "reset" && (
+            <SegmentedControl
+              label="Acesso"
+              value={mode}
+              options={[
+                { value: "in", label: "Entrar" },
+                { value: "up", label: "Criar conta" },
+              ]}
+              onChange={(nextMode) => {
+                setMode(nextMode);
+                setError("");
+                setNote("");
+              }}
+            />
+          )}
           {mode === "reset" && (
             <T bold size={20}>
               Recuperar acesso
@@ -144,7 +154,13 @@ export default function Auth() {
             </T>
           )}
           <Button disabled={busy} onPress={() => submit()}>
-            {busy ? "Abrindo…" : mode === "up" ? "Criar minha conta" : mode === "reset" ? "Recuperar acesso" : "Entrar"}
+            {busy
+              ? "Abrindo…"
+              : mode === "up"
+                ? "Criar minha conta"
+                : mode === "reset"
+                  ? "Recuperar acesso"
+                  : "Entrar"}
           </Button>
           <Row className="my-[4px]">
             <View className="flex-1 h-[1px] bg-nebula-border" />
@@ -165,14 +181,19 @@ export default function Auth() {
               </Button>
             </View>
           </Row>
-          <Pressable accessibilityRole="button" onPress={() => submit(true)} className="items-center p-[5px]">
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => submit(true)}
+            className="items-center p-[5px]"
+          >
             <T size={12} className="text-nebula-purple">
               Explorar demonstração
             </T>
           </Pressable>
           <T muted size={10} className="text-center leading-[17px]">
-            Demonstração local. Use qualquer e-mail válido e senha com 6 caracteres. Não use sua senha real. Nenhum dado
-            é enviado a um servidor.
+            Demonstração local. Use qualquer e-mail válido e senha com 6
+            caracteres. Não use sua senha real. Nenhum dado é enviado a um
+            servidor.
           </T>
         </ScrollView>
       </KeyboardAvoidingView>

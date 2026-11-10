@@ -1,18 +1,27 @@
 import { Chips } from "@/components/ui/chip";
-import { Icon } from "@/components/ui/icon";
-import { NumberText, T } from "@/components/ui/text";
-import { Section } from "@/components/ui/section";
 import { Gradient } from "@/components/ui/gradient";
-import { useDashboard } from "@/hooks/use-dashboard";
+import { Icon } from "@/components/ui/icon";
+import { Progress } from "@/components/ui/progress";
+import { Section } from "@/components/ui/section";
+import { Row } from "@/components/ui/surface";
+import { NumberText, T } from "@/components/ui/text";
+import type { useDashboard } from "@/hooks/use-dashboard";
 import { color, money } from "@/utils/finance";
 import { router } from "expo-router";
 import { Pressable, View } from "react-native";
+
 export function CategoryPreview({
   model,
 }: {
   model: ReturnType<typeof useDashboard>;
 }) {
   const { data, sum } = model;
+  const categories = data.expenseCategories
+    .map((id) => ({ id, spent: sum.category(id) }))
+    .filter(({ spent }) => spent > 0);
+
+  if (!categories.length) return null;
+
   return (
     <View className="gap-4">
       <Section
@@ -21,45 +30,59 @@ export function CategoryPreview({
         onPress={() => router.replace("/analytics")}
       />
       <Chips>
-        {data.expenseCategories
-          .filter((id) => sum.category(id) > 0)
-          .map((id) => {
-            const c = data.categories[id];
-            return (
-              <Pressable
-                key={id}
-                accessibilityRole="button"
-                accessibilityLabel={`Categoria ${c.label}`}
-                onPress={() =>
-                  router.replace({
-                    pathname: "/history",
-                    params: { category: id },
-                  })
-                }
-                className="w-[148px] overflow-hidden rounded-[20px] border border-white/[0.10] bg-[#211A2C]"
-              >
-                <Gradient
-                  colors={[color(c.h) + "12", "#19141FFF"]}
-                  className="gap-4 p-[18px]"
-                >
+        {categories.map(({ id, spent }) => {
+          const category = data.categories[id];
+          const tint = color(category.h);
+          const share = sum.expense > 0 ? spent / sum.expense : 0;
+
+          return (
+            <Pressable
+              key={id}
+              accessibilityRole="button"
+              accessibilityLabel={`Categoria ${category.label}, ${data.hide ? "valor oculto" : money(spent)}`}
+              onPress={() =>
+                router.replace({
+                  pathname: "/history",
+                  params: { category: id },
+                })
+              }
+              className="w-[160px] overflow-hidden rounded-card border bg-nebula-surface active:opacity-80"
+              style={{ borderColor: tint + "45" }}
+            >
+              <Gradient
+                pointerEvents="none"
+                colors={[tint + "32", "transparent"]}
+                start={{ x: 1, y: 0 }}
+                end={{ x: 0.2, y: 1 }}
+                className="absolute inset-0"
+              />
+              <View className="flex-1 justify-between gap-3 p-3.5">
+                <Row className="justify-between gap-2">
                   <View
-                    className="w-[34px] h-[34px] rounded-[12px] items-center justify-center"
-                    style={{ backgroundColor: color(c.h) + "22" }}
+                    className="h-9 w-9 items-center justify-center rounded-full"
+                    style={{ backgroundColor: tint + "25" }}
                   >
-                    <Icon path={c.icon} tint={color(c.h)} size={19} />
+                    <Icon path={category.icon} tint={tint} size={18} />
                   </View>
-                  <View className="gap-[5px]">
-                    <T size={14} bold>
-                      {c.label}
+                  {!data.hide && (
+                    <T size={11} bold style={{ color: tint }}>
+                      {Math.round(share * 100)}%
                     </T>
-                    <NumberText size={15}>
-                      {data.hide ? "••••" : "− " + money(sum.category(id))}
-                    </NumberText>
-                  </View>
-                </Gradient>
-              </Pressable>
-            );
-          })}
+                  )}
+                </Row>
+                <View className="gap-0.5">
+                  <T size={13} muted>
+                    {category.label}
+                  </T>
+                  <NumberText size={16}>
+                    {data.hide ? "R$ ••••" : money(spent)}
+                  </NumberText>
+                </View>
+                {!data.hide && <Progress value={share} tint={tint} />}
+              </View>
+            </Pressable>
+          );
+        })}
       </Chips>
     </View>
   );

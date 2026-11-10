@@ -1,6 +1,6 @@
 import { palette } from "@/theme/colors";
 import { Icon } from "./icon";
-import { Card } from "./surface";
+import { View } from "react-native";
 import { T } from "./text";
 export function ErrorText({ text }: { text: string }) {
   return text ? (
@@ -11,15 +11,22 @@ export function ErrorText({ text }: { text: string }) {
 }
 export function Empty({
   text = "Nenhuma transação encontrada.",
+  detail,
 }: {
   text?: string;
+  detail?: string;
 }) {
   return (
-    <Card className="items-center gap-3 py-[30px]">
+    <View className="items-center gap-2 px-4 py-10">
       <Icon name="search" tint={palette.purple} />
-      <T muted className="text-center">
+      <T bold size={16} className="text-center">
         {text}
       </T>
-    </Card>
+      {!!detail && (
+        <T muted size={13} className="text-center">
+          {detail}
+        </T>
+      )}
+    </View>
   );
 }

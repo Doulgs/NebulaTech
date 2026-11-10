@@ -92,7 +92,7 @@ export function answer(question: string, data: FinanceData) {
   const q = question.toLowerCase(),
     sum = totals(data);
   if (/mercado|categoria/.test(q))
-    return `Os gastos com Mercado somam ${money(sum.category("mercado"))} em outubro. O orçamento é ${money(data.categories.mercado.budget || 0)}. Você pode conferir cada lançamento no Histórico.`;
+    return `Os gastos com Mercado somam ${money(sum.category("mercado"))} em outubro. O orçamento é ${money(data.categories.mercado.budget || 0)}. Você pode conferir cada lançamento em Atividades.`;
   if (/família|familia|quem|membro/.test(q)) {
     const list = seed.members
       .map((m) => ({

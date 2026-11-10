@@ -27,11 +27,13 @@ export default function Categories() {
       header={
         <BackTitle
           title="Categorias"
-          subtitle="Dê um destino a cada real."
+          subtitle="Orçamentos e gastos por categoria."
+          back
           action={
             <IconButton
               name="plus"
               label="Nova categoria"
+              active
               onPress={() => router.push("/new-category")}
             />
           }
@@ -50,7 +52,7 @@ export default function Categories() {
           onPress={() => setTab("in")}
         />
       </Row>
-      <Card>
+      <Card tone="orbital">
         <T muted size={11}>
           {tab === "out"
             ? "Gasto do mês vs. orçamento"
@@ -89,7 +91,7 @@ export default function Categories() {
             >
               <Row>
                 <View
-                  className="w-[38px] h-[38px] rounded-[13px] items-center justify-center"
+                  className="w-[38px] h-[38px] rounded-full items-center justify-center"
                   style={{ backgroundColor: color(c.h) + "22" }}
                 >
                   <Icon path={c.icon} tint={color(c.h)} size={19} />

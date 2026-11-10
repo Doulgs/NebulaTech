@@ -12,13 +12,14 @@ import {
   type ViewStyle,
 } from "react-native";
 import { Gradient } from "./gradient";
+import { palette } from "@/theme/colors";
 import { cn } from "@/theme/classes";
 
 export function GlassSurface({
   children,
   className,
   style,
-  tint = "#25163755",
+  tint = palette.glassTint,
 }: {
   children: ReactNode;
   className?: string;
@@ -48,7 +49,7 @@ export function GlassSurface({
   return (
     <View
       className={cn(
-        "relative overflow-hidden rounded-full border border-white/[0.13]",
+        "relative overflow-hidden rounded-full border border-nebula-border",
         className,
       )}
       style={style}
@@ -64,11 +65,7 @@ export function GlassSurface({
       ) : (
         <Gradient
           pointerEvents="none"
-          colors={
-            tint === "#25163755"
-              ? ["#30253DEB", "#171020F5"]
-              : [tint, "#33224444"]
-          }
+          colors={[palette.glassTop, palette.glassBottom]}
           className="absolute inset-0"
         />
       )}

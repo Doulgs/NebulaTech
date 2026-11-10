@@ -2,6 +2,7 @@ import Animated from "react-native-reanimated";
 import { useNavigationScroll } from "./navigation-motion";
 import { useContext } from "react";
 import { SheetContext } from "./sheet-context";
+import { tokens } from "@/theme/tokens";
 import { cn } from "@/theme/classes";
 import { router } from "expo-router";
 import { type ReactNode } from "react";
@@ -28,47 +29,34 @@ export function BackTitle({
   const close =
     onBack ??
     (() => (router.canGoBack() ? router.back() : router.replace("/home")));
-  if (inSheet)
-    return (
-      <Row className="items-start justify-between gap-3 pt-2">
-        <View className="flex-1 gap-1">
-          <T bold size={23} className="tracking-[-0.4px]">
-            {title}
-          </T>
-          <T muted size={12}>
-            {subtitle || "Confira as informações deste lançamento"}
-          </T>
-        </View>
-        <IconButton name="close" label="Fechar" onPress={close} />
-      </Row>
-    );
   return (
-    <Row className="justify-between">
-      <Row className="flex-1">
-        {(back || !!onBack) && (
-          <IconButton
-            name="back"
-            label="Voltar"
-            onPress={
-              onBack ||
-              (() =>
-                router.canGoBack() ? router.back() : router.replace("/home"))
-            }
-          />
-        )}
-        <View className="shrink gap-0.5">
-          <T bold size={26}>
+    <View className="gap-3">
+      {!inSheet && (back || !!onBack) && (
+        <IconButton name="back" label="Voltar" onPress={close} />
+      )}
+      <Row className="items-start justify-between gap-3">
+        <View className="min-w-0 flex-1 gap-1.5">
+          <T
+            accessibilityRole="header"
+            bold
+            size={inSheet ? 26 : 34}
+            className="tracking-[-0.9px]"
+          >
             {title}
           </T>
           {!!subtitle && (
-            <T muted size={12}>
+            <T muted size={14}>
               {subtitle}
             </T>
           )}
         </View>
+        {inSheet ? (
+          <IconButton name="close" label="Fechar" onPress={close} />
+        ) : (
+          action
+        )}
       </Row>
-      {action}
-    </Row>
+    </View>
   );
 }
 export function Page({
@@ -87,12 +75,12 @@ export function Page({
       <Animated.ScrollView
         onScroll={onScroll}
         scrollEventThrottle={16}
-        className="flex-1"
+        style={{ flex: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        contentContainerClassName="gap-section"
         contentContainerStyle={{
-          paddingBottom: Math.max(inset.bottom, 20) + 92,
+          gap: tokens.spacing.section,
+          paddingBottom: Math.max(inset.bottom, 14) + 86,
         }}
       >
         {!!header && (

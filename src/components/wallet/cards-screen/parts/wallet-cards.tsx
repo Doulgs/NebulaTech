@@ -32,6 +32,7 @@ export function WalletCards({
             key={c.name}
             accessibilityRole="button"
             accessibilityLabel={`Selecionar ${c.name}`}
+            accessibilityState={{ selected: index === i }}
             onPress={() => {
               setIndex(i);
               setConfirm(false);
@@ -49,11 +50,16 @@ export function WalletCards({
               )}
             >
               <View className="absolute w-[180px] h-[180px] border-[1px] border-[#FFFFFF16] rounded-[90px] right-[-50px] top-[-50px]" />
+              <View className="absolute -right-6 -top-6 h-32 w-32 rounded-full border border-white/10" />
               <Row className="justify-between">
                 <T size={21} bold className="font-display">
-                  nébula
+                  Andromeda
                 </T>
-                <T size={10}>{c.tier.toUpperCase()}</T>
+                <View className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1">
+                  <T bold size={10}>
+                    {c.tier.toUpperCase()}
+                  </T>
+                </View>
               </Row>
               <Row>
                 <View className="w-[31px] h-[24px] border-[1px] border-[#D7BED288] rounded-[6px] bg-[#B19BAF66]" />

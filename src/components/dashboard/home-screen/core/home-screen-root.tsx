@@ -10,7 +10,6 @@ import { BalancePanel } from "../parts/balance-panel";
 import { CategoryPreview } from "../parts/category-preview";
 import { HomeCalendar } from "../parts/home-calendar";
 import { HomeHeader } from "../parts/home-header";
-import { HomeShortcuts } from "../parts/home-shortcuts";
 import { RecentActivity } from "../parts/recent-activity";
 export default function HomeScreenRoot() {
   const model = useDashboard();
@@ -28,7 +27,6 @@ export default function HomeScreenRoot() {
       ) : (
         <BalancePanel model={model} />
       )}
-      <HomeShortcuts />
       <CategoryPreview model={model} />
       <Card>
         <View className="gap-1">

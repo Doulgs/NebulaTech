@@ -16,6 +16,12 @@ export function WalletAccounts({
   const { sum } = model;
   return (
     <>
+      <Card tone="orbital" className="gap-1">
+        <T muted size={13}>
+          Total nas contas
+        </T>
+        <Amount value={sum.balance} size={32} />
+      </Card>
       <Section title="Suas contas" />
       <View className="gap-[12px]">
         {seed.accounts.map((a, i) => {
@@ -51,12 +57,6 @@ export function WalletAccounts({
           );
         })}
       </View>
-      <Row className="justify-between">
-        <T muted size={12}>
-          Total nas contas
-        </T>
-        <Amount value={sum.balance} size={18} />
-      </Row>
       <T size={10} muted>
         Pagamentos e bloqueios são simulados e salvos neste dispositivo.
       </T>

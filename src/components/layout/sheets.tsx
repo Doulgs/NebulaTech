@@ -26,14 +26,16 @@ const backdrop = (props: BottomSheetBackdropProps) => (
   />
 );
 const backgroundStyle = {
-  backgroundColor: palette.surface,
+  backgroundColor: palette.bg,
   borderRadius: tokens.radius.sheet,
 };
 export function RouteSheet({
   header,
+  footer,
   children,
 }: {
   header?: ReactNode;
+  footer?: ReactNode;
   children: ReactNode;
 }) {
   const inset = useSafeAreaInsets();
@@ -59,7 +61,7 @@ export function RouteSheet({
           onClose={closeSheetRoute}
           topInset={inset.top + 8}
           backdropComponent={backdrop}
-          handleIndicatorStyle={{ backgroundColor: "#A29AAF", width: 40 }}
+          handleIndicatorStyle={{ backgroundColor: palette.muted, width: 40 }}
           backgroundStyle={backgroundStyle}
           keyboardBehavior="interactive"
           keyboardBlurBehavior="restore"
@@ -69,18 +71,28 @@ export function RouteSheet({
           <View className="flex-1">
             <View
               testID="sheet-header"
-              className="border-b border-white/[0.08] px-5 pb-4"
+              className="border-b border-nebula-border px-5 pb-4 pt-1"
             >
               {header}
             </View>
             <SheetScrollView
               className="flex-1"
               contentContainerClassName="gap-[22px] px-5 pt-5"
-              contentContainerStyle={{ paddingBottom: inset.bottom + 32 }}
+              contentContainerStyle={{
+                paddingBottom: footer ? 20 : inset.bottom + 32,
+              }}
               keyboardShouldPersistTaps="handled"
             >
               {children}
             </SheetScrollView>
+            {!!footer && (
+              <View
+                className="border-t border-nebula-border bg-nebula-bg px-screen pt-3"
+                style={{ paddingBottom: Math.max(inset.bottom, 14) }}
+              >
+                {footer}
+              </View>
+            )}
           </View>
         </BottomSheet>
       </View>
@@ -121,7 +133,7 @@ export function ActionSheet({
       enableDynamicSizing={false}
       onDismiss={onClose}
       backdropComponent={backdrop}
-      handleIndicatorStyle={{ backgroundColor: "#A29AAF", width: 40 }}
+      handleIndicatorStyle={{ backgroundColor: palette.muted, width: 40 }}
       backgroundStyle={backgroundStyle}
       topInset={inset.top + 8}
     >
@@ -129,7 +141,7 @@ export function ActionSheet({
         <View className="flex-1">
           <View
             testID="sheet-header"
-            className="border-b border-white/[0.08] px-5 pb-4"
+            className="border-b border-nebula-border px-5 pb-4 pt-1"
           >
             {header}
           </View>

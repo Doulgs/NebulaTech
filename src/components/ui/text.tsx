@@ -1,6 +1,12 @@
 import { cn } from "@/theme/classes";
 import { type ReactNode } from "react";
-import { Platform, Text, type StyleProp, type TextStyle } from "react-native";
+import {
+  Platform,
+  Text,
+  type StyleProp,
+  type TextStyle,
+  type TextProps as NativeTextProps,
+} from "react-native";
 
 const textSizes: Record<number, string> = {
   9: "text-[9px] leading-[13.5px]",
@@ -16,13 +22,13 @@ const textSizes: Record<number, string> = {
   20: "text-[20px] leading-[30px]",
   21: "text-[21px] leading-[31.5px]",
   22: "text-[22px] leading-[33px]",
-  24: "text-[24px] leading-[36px]",
-  26: "text-[26px] leading-[39px]",
-  28: "text-[28px] leading-[42px]",
-  30: "text-[30px] leading-[45px]",
-  32: "text-[32px] leading-[48px]",
-  34: "text-[34px] leading-[51px]",
-  38: "text-[38px] leading-[57px]",
+  24: "text-[24px] leading-[29px]",
+  26: "text-[26px] leading-[31px]",
+  28: "text-[28px] leading-[34px]",
+  30: "text-[30px] leading-[36px]",
+  32: "text-[32px] leading-[38px]",
+  34: "text-[34px] leading-[41px]",
+  38: "text-[38px] leading-[46px]",
 };
 type TextProps = {
   children: ReactNode;
@@ -30,6 +36,7 @@ type TextProps = {
   style?: StyleProp<TextStyle>;
   className?: string;
   selectable?: boolean;
+  accessibilityRole?: NativeTextProps["accessibilityRole"];
 };
 export function T({
   children,

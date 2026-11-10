@@ -20,8 +20,8 @@ export function Chip({
       accessibilityState={{ selected: !!active }}
       onPress={onPress}
       className={cn(
-        "min-h-11 flex-row items-center justify-center gap-[7px] rounded-full border border-nebula-border bg-white/[0.03] px-[13px]",
-        active && "border-nebula-purple/30 bg-nebula-purple/15",
+        "min-h-11 flex-row items-center justify-center gap-[7px] rounded-full border border-nebula-border bg-nebula-surface px-4",
+        active && "border-nebula-neutral bg-nebula-neutral",
       )}
     >
       {!!dot && (
@@ -30,7 +30,11 @@ export function Chip({
           style={{ backgroundColor: dot }}
         />
       )}
-      <T size={12} bold={active}>
+      <T
+        size={13}
+        bold={active}
+        className={active ? "text-nebula-ink" : undefined}
+      >
         {label}
       </T>
     </Pressable>

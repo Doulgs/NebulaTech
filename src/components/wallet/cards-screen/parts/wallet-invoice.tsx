@@ -16,12 +16,14 @@ export function WalletInvoice({
   const { data, save, confirm, setConfirm, card, used } = model;
   return (
     <>
-      <Card>
-        <Section title="Fatura atual" />
-        <Amount value={used} size={32} />
-        <T muted size={12}>
-          {used ? "Vencimento em " + card.due : "Fatura paga na demonstração"}
-        </T>
+      <Card tone="orbital">
+        <View className="gap-1">
+          <Section title="Fatura atual" />
+          <Amount value={used} size={34} />
+          <T muted size={12}>
+            {used ? "Vencimento em " + card.due : "Fatura paga na demonstração"}
+          </T>
+        </View>
         <Row className="justify-between">
           <T muted size={11}>
             Limite utilizado

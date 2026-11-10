@@ -9,7 +9,7 @@ export function Progress({
   tint?: string;
 }) {
   return (
-    <View className="h-[5px] overflow-hidden rounded bg-[#2A2434]">
+    <View className="h-[5px] overflow-hidden rounded bg-nebula-raised">
       <View
         className="h-full rounded"
         style={{

@@ -25,7 +25,7 @@ export function TransactionRow({
         const navigate = replace ? router.replace : router.push;
         navigate({ pathname: "/transaction/[id]", params: { id: tx.id } });
       }}
-      className="flex-row items-center gap-3 rounded-[15px] border-b border-nebula-border px-0.5 py-4 active:bg-[#261C34]"
+      className="flex-row items-center gap-3 rounded-[15px] border-b border-nebula-border px-0.5 py-4 active:bg-nebula-raised"
     >
       <View
         className="h-[43px] w-[43px] items-center justify-center rounded-[15px]"

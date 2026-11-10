@@ -3,15 +3,26 @@ import { closeSheetRoute } from "@/components/layout/navigation";
 import { BackTitle } from "@/components/layout/screen";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/surface";
-import { Chip } from "@/components/ui/chip";
 import { ErrorText } from "@/components/ui/state-views";
 import { Field } from "@/components/ui/field";
 import { Icon } from "@/components/ui/icon";
 import { T } from "@/components/ui/text";
+import { palette } from "@/theme/colors";
 import { useFinance } from "@/hooks/use-finance";
 import { color, parseMoney } from "@/utils/finance";
 import { useState } from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
+
+const swatches = [
+  { hue: 295, label: "Violeta" },
+  { hue: 250, label: "Azul" },
+  { hue: 200, label: "Ciano" },
+  { hue: 160, label: "Verde-água" },
+  { hue: 110, label: "Verde" },
+  { hue: 70, label: "Amarelo" },
+  { hue: 20, label: "Coral" },
+  { hue: 340, label: "Rosa" },
+];
 export function NewCategory() {
   const { data, save } = useFinance();
   const [name, setName] = useState(""),
@@ -56,7 +67,26 @@ export function NewCategory() {
     }
   }
   return (
-    <FormPage header={<BackTitle title="Nova categoria" subtitle="Organize seus gastos com nome, cor e orçamento" />}>
+    <FormPage
+      header={
+        <BackTitle
+          title="Nova categoria"
+          subtitle="Organize seus gastos com nome, cor e orçamento"
+        />
+      }
+      footer={
+        <>
+          <ErrorText text={error} />
+          <Button
+            variant="neutral"
+            onPress={submit}
+            disabled={busy || name.trim().length < 2}
+          >
+            {busy ? "Salvando…" : "Criar categoria"}
+          </Button>
+        </>
+      }
+    >
       <Card
         className="items-center p-[26px]"
         style={{ backgroundColor: color(h) + "15" }}
@@ -83,24 +113,25 @@ export function NewCategory() {
       <T muted size={12}>
         Cor
       </T>
-      <View className="flex-row flex-wrap gap-[10px]">
-        {[295, 250, 200, 160, 110, 70, 20, 340].map((hue) => (
-          <Chip
+      <View className="flex-row flex-wrap gap-1">
+        {swatches.map(({ hue, label }) => (
+          <Pressable
             key={hue}
-            label={hue === h ? "✓" : "●"}
-            dot={color(hue)}
-            active={h === hue}
+            accessibilityRole="button"
+            accessibilityLabel={label}
+            accessibilityState={{ selected: h === hue }}
             onPress={() => setH(hue)}
-          />
+            className="h-11 w-11 items-center justify-center rounded-full active:opacity-70"
+          >
+            <View
+              className="h-8 w-8 items-center justify-center rounded-full"
+              style={{ backgroundColor: color(hue) }}
+            >
+              {h === hue && <Icon name="check" size={17} tint={palette.ink} />}
+            </View>
+          </Pressable>
         ))}
       </View>
-      <ErrorText text={error} />
-      <Button onPress={submit} disabled={busy}>
-        {busy ? "Salvando…" : "Criar categoria"}
-      </Button>
-      <Button secondary onPress={() => closeSheetRoute()}>
-        Cancelar
-      </Button>
     </FormPage>
   );
 }
